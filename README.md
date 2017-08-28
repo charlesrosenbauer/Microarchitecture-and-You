@@ -15,7 +15,9 @@ So here's my plan: this will start out as a *relatively* brief explanation of mi
 
 Unlike wikipedia though, this will be more stripped down and to-the-point, more directed toward programmers, and trying to keep relavent to the overall goal of keeping to the aforementioned goal.
 
-At the moment, the following is the Table of Contents. Most of these articles have not been started yet, but I'll get to them as I can. Also, due to the intended nonlinear nature of this (I don't know what exactly to call this), this will be more of a list of subjects covered with links to those that have been completed. Feel free to suggest more subjects or contribute. Just be aware that this will take some time to complete. Articles with a question mark afterward are ones I'm not sure about doing, as I don't know how interested people will be in them.
+This does assume you understand binary, modular arithmetic, the concept of bits and bytes, etc.
+
+At the moment, the following is the Table of Contents. Most of these articles have not been started yet, but I'll get to them as I can. Also, due to the intended nonlinear nature of this (I don't know what exactly to call this), this will be more of a list of subjects covered with links to those that have been completed. Feel free to suggest more subjects or contribute. Just be aware that this will take some time to complete. Articles with "(?)" afterward are ones I'm not sure about doing, as I don't know how interested people will be in them.
 
 ---
 **Table of Contents**
@@ -30,16 +32,19 @@ Misc.
 Memory
   * [Why You Should Care About Memory](text/Memory/whyyoushouldcareaboutmemory.md)
   * RAM
+  * Memory Alignment
   * Common Types of Memory
   * How Programs Lay Out Your Memory
   * Memory Bandwidth, Bus Size, and Latency
-  * Caches
-  * Cache Coherency in CPUs
+  * [Why Caches](Memory/whycaches.md)
+  * [Caches](Memory/caches.md)
+  * The Problem of Cache Coherency
   * SMP vs. NUMA
+  * Virtual Memory
   * Memory Paging
   * Optimizing Around Latency
   * Optimizing Around Bandwidth
-  * Caches v. Scratchpad
+  * Caches v. Scratchpad v. Register Files
   * Prefetching
   * Future of Memory
 
@@ -52,7 +57,8 @@ CPUs
   * Pipelines
   * Interacting With Memory
   * Prefetching
-  * RISC v. CISC
+  * [RISC v. CISC](text/CPU/riscvcisc.md)
+  * IPC and ILP
   * Superscalar Processors
   * SMT / Hyperthreading
   * Out-of-Order Execution
@@ -61,10 +67,10 @@ CPUs
   * Manycore and NUMA
   * Heterogeous Architectures
   * Instruction v. Data Caches
-  * Tiled Architectures?
-  * VLIW : From DSPs to Itanium?
-  * Stack Machines?
-  * Belt Machines?
+  * Tiled Architectures (?)
+  * VLIW : From DSPs to Itanium (?)
+  * Stack Machines (?)
+  * Belt Machines (?)
   * Future of CPUs
 
 GPUs
@@ -74,7 +80,7 @@ GPUs
   * SIMD v. MIMD
   * GPU Register Files
   * Common Types of Memory
-  * Caches v. Scratchpad
+  * Caches v. Scratchpad v. Register Files
   * Basics of a Graphics Pipeline
   * Future of GPUs
 
@@ -82,9 +88,9 @@ Programming This Crazy Hardware
   * Minimizing Cache Misses
   * Working with the Prefetcher
   * Cache-Oblivious Programming
-  * Intro to Bit Twiddling : Crazy Speed Hacks
+  * Intro to Bit Twiddling : Crazy Speed Hacks (?)
 
 The Compiler
   * Various Optimizations
   * SSA Form : Functional Assembly
-  * SIMD Optimizations?
+  * SIMD Optimizations (?)
