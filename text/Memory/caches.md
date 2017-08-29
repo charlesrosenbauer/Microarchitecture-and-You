@@ -31,6 +31,8 @@ Cache Lines are used for two reasons: *spatial locality* and *minimizing overhea
 
 Storing the range of addresses for some data takes a bit of memory. If we have 48 bit addresses, the address for a single byte takes up a minimum of 6x more memory than the actual byte does. This is a *lot* of overhead, and gives us no temporal locality above the bit level. So instead of one byte, caches typically use groups of 64 bytes. So that they don't have to store two numbers for the range, they only store one address and assume the end of the cache line is 64 bytes later in memory. A 64B cache line will also use a 64 byte alignment to knock off an extra 6 bits from that address and simplify some of the logistics.
 
+Due to the relatively small size of cache lines, it's not uncommon for caches to contain hundreds to thousands of them.
+
 ---
 
 **Cache Associativity**
@@ -47,7 +49,7 @@ The bottom example shows how 2-way associativity resolves this conflict. With th
 
 ---
 
-**Working With the Cache**
+**Reads and Writes in the Cache**
 
 Reading from and writing to the cache is pretty straightforward.
 
@@ -56,6 +58,8 @@ In the case of a read, the CPU sends an address to the cache. The cache hashes i
 In the case of a write, the CPU sends an address and a few bytes to the cache. A similar process occurs to when the CPU reads from the cache. The difference is that when a cache hit occurs, the value is written to the cache line and no value is sent back. If no appropriate cache line exists, then the address and data are sent out to RAM.
 
 [Writes to the cache when multiple cores are present is *much* more complicated.]()
+
+Another case to consider is when a cache line is removed due to a conflict. Cache lines typically contain a "dirty bit". This functions as a simple boolean value. It is false by default, but is set to true whenever the cache line is changed. If the dirty bit is false, then the rejected cache line is discarded. If the dirty bit is true, then that means it that RAM needs to be updated, and so the changes are sent out to RAM. This costs nothing in terms of latency as far as the CPU is concerned, but it does use some memory bandwidth. Some caches are "write-back", meaning that they will update RAM whenever any change is made. This makes a dirty bit mostly unnecessary, but has a large cost in terms of memory bandwidth (and consequentially power consumption).
 
 ---
 
@@ -71,6 +75,8 @@ L3 | ~40 cycles | 4-16 | 1-16MB | Very few per CPU die
 RAM | ~200-300 cycles | N/A | A few Gigs | A few DDR3/4 sticks
 
 This gets more complicated with NUMA architectures though, especially L3 and RAM speeds. This also only applies to CPUs; GPUs are a little different. These numbers are what is common for most x86 CPUs these days and will be different on other architectures like ARM. Don't rely on the associativity or size numbers either; they're more or less just what things tend to be as of writing this. They will depend a lot on the particular CPU architecture you're working with.
+
+In addition, [cache prefetching](prefetch.md) can have a big impact on your performance if you access memory nicely.
 
 ---
 

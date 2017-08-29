@@ -28,12 +28,14 @@ Introduction (You are Here)
 
 Misc.
   * [Why You Should Care About Hardware](text/Misc/whyyoushouldcareabouthardware.md)
+  * [Clock Speed v. Core Count](text/Misc/clockvcores.md)
+  * Amdahl's Law
 
 Memory
   * [Why You Should Care About Memory](text/Memory/whyyoushouldcareaboutmemory.md)
   * RAM
   * Memory Alignment
-  * Common Types of Memory
+  * [Common Types of Memory](text/Memory/commonmemory.md)
   * How Programs Lay Out Your Memory
   * Memory Bandwidth, Bus Size, and Latency
   * [Why Caches](Memory/whycaches.md)
@@ -45,7 +47,7 @@ Memory
   * Optimizing Around Latency
   * Optimizing Around Bandwidth
   * Caches v. Scratchpad v. Register Files
-  * Prefetching
+  * [Prefetching](text/Memory/prefetch.md)
   * Future of Memory
 
 CPUs
@@ -55,8 +57,10 @@ CPUs
   * Basics of Assembly
   * Logic Gates
   * Pipelines
+  * Branch Prediction
   * Interacting With Memory
-  * Prefetching
+  * [Common Types of Memory](text/Memory/commonmemory.md)
+  * [Prefetching](text/Memory/prefetch.md)
   * [RISC v. CISC](text/CPU/riscvcisc.md)
   * IPC and ILP
   * Superscalar Processors
@@ -79,7 +83,7 @@ GPUs
   * GPU caches v. CPU caches
   * SIMD v. MIMD
   * GPU Register Files
-  * Common Types of Memory
+  * [Common Types of Memory](text/Memory/commonmemory.md)
   * Caches v. Scratchpad v. Register Files
   * Basics of a Graphics Pipeline
   * Future of GPUs
