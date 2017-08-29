@@ -39,7 +39,7 @@ Due to the relatively small size of cache lines, it's not uncommon for caches to
 
 Okay, but what about conflicts? What about when I have multiple cache lines that end up with the same hash? What if I need both?
 
-![Cache Associativity](../images/cacheassociativity.png)
+![Cache Associativity](../../images/cacheassociativity.png)
 
 Cache Associativity means that each entry in the hash table has multiple cache lines associated with it. This is slower, more complex, and more power-hungry, but it tends to be worth it so long as you don't go completely overboard with it. The sweet spot tends to be around 4-way associativity (4 cache lines per table entry), but it's common for larger, less frequently used caches (L3 for example) to be more associative. This reduces conflicts as seen in the diagram above.
 
