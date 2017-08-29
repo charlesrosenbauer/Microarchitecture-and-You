@@ -38,8 +38,8 @@ Memory
   * [Common Types of Memory](text/Memory/commonmemory.md)
   * How Programs Lay Out Your Memory
   * Memory Bandwidth, Bus Size, and Latency
-  * [Why Caches](Memory/whycaches.md)
-  * [Caches](Memory/caches.md)
+  * [Why Caches](text/Memory/whycaches.md)
+  * [Caches](text/Memory/caches.md)
   * The Problem of Cache Coherency
   * SMP vs. NUMA
   * Virtual Memory
@@ -52,7 +52,7 @@ Memory
 
 CPUs
   * Why You Should Care About the CPU
-  * Clock Speed v. Core Count
+  * [Clock Speed v. Core Count](text/Misc/clockvcores.md)
   * CPU Fundamentals
   * Basics of Assembly
   * Logic Gates
@@ -79,7 +79,7 @@ CPUs
 
 GPUs
   * Why You Should Care About the GPU
-  * Clock Speed v. Core Count
+  * [Clock Speed v. Core Count](text/Misc/clockvcores.md)
   * GPU caches v. CPU caches
   * SIMD v. MIMD
   * GPU Register Files
