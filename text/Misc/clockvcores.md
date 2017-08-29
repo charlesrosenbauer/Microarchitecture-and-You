@@ -35,6 +35,6 @@ In the real world, due to various factors (such as leakage throwing off our numb
 
 **The Future is Heterogeous**
 
-One clear issue is that not all code can be run in parallel. Some code has to run sequentially. It's important to keep [Amdahl's Law]() in mind when considering maximizing performance.
+One clear issue is that not all code can be run in parallel. Some code has to run sequentially. It's important to keep [Amdahl's Law](amdahl.md) in mind when considering maximizing performance.
 
 A good solution to this is ARM's big.LITTLE architecture. big.LITTLE features a large number of small, simple, slow cores, and a small number of large, complex, fast cores. This means that parallel work can be run on the numerous slower cores while the sequential work can be run on the few fast cores. This is a pretty efficient approach to maintaining efficiency while minimizing the overall latency of the software.
