@@ -77,3 +77,23 @@ SIMD is bad for:
 * If your language supports vectorization optimizations, array operations will often be optimized.
 * Arranging memory into Structs-of-Arrays instead of Arrays-of-Structs can lower overhead to SIMD optimizations by simplifying the process of arranging memory in registers.
 * Use any vector extensions to your language. Most major languages (even web languages like Javascript and Web Assembly) support them, or are at least planned to support them soon.
+
+---
+
+**What About MIMD?**
+
+The main way that MIMD is implemented is via multiple cores. VLIW architectures can be considered to use a restricted form of instruction-level MIMD, but they also have some large flaws and unless you're working with embedded systems or a legacy Itanium system, that's not something you need to worry about.
+
+While MIMD can in theory do anything that SIMD can do (perhaps a bit less efficiently though), and can do things SIMD cannot, it still has some large disadvantages. When using multiple cores for MIMD, there is a substantial cost to thread communication.
+
+Using parallelism to solve a problem is much like getting multiple people to work together on a problem; the more complicated the task, the more communication is necessary. The more fine-grained our search for parallelism, the more parallelism we find, but also the less overhead we can afford to have for the parallelism to be worth it. For better parallel performance, we need better core-to-core communication.
+
+Unfortunately, communicating through caches typically will result in significant latency. Reading a value from an L3 cache (where shared mutable state often winds up), takes about 40 clock cycles. Communicating through RAM is even slower at about 300 cycles. If this is too slow for the parallelism you need, modern CPUs won't be up to the task.
+
+However, don't worry too much. Most applications have opportunites for parallelism at all levels, and CPUs that can actually take advantage of all of it are pretty far off. With modern Out-of-Order CPUs, some of that low-level work may even be running in parallel anyway.
+
+---
+
+**How Do I Take Advantage of MIMD?**
+
+Multithreading.
