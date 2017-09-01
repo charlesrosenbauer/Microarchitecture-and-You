@@ -66,7 +66,7 @@ CPUs
   * Superscalar Processors
   * SMT / Hyperthreading
   * Out-of-Order Execution
-  * SIMD v. MIMD
+  * [SIMD v. MIMD](text/CPU/simdvmimd.md)
   * Multicore and SMP
   * Manycore and NUMA
   * Heterogeous Architectures
@@ -81,7 +81,7 @@ GPUs
   * Why You Should Care About the GPU
   * [Clock Speed v. Core Count](text/Misc/clockvcores.md)
   * GPU caches v. CPU caches
-  * SIMD v. MIMD
+  * [SIMD v. MIMD](text/CPU/simdvmimd.md)
   * GPU Register Files
   * [Common Types of Memory](text/Memory/commonmemory.md)
   * Caches v. Scratchpad v. Register Files
