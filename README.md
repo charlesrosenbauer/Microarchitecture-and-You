@@ -33,7 +33,7 @@ Misc.
 
 Memory
   * [Why You Should Care About Memory](text/Memory/whyyoushouldcareaboutmemory.md)
-  * RAM
+  * [RAM](text/Memory/ram.md)
   * Memory Alignment
   * [Common Types of Memory](text/Memory/commonmemory.md)
   * How Programs Lay Out Your Memory

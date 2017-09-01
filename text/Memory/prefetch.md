@@ -57,3 +57,12 @@ One simple way it can do this is to detect if you've used multiple cache lines i
 A slightly more complex method is that the CPU can detect patterns in the offset of subsequent memory requests; if you request the byte at address 100, then address 110, then 120, etc., it might start predicting that you're loading each 10th byte, and start prefetching memory accordingly.
 
 More complex methods than that exist too. Some CPUs use Correlating Prefetchers, which create a small table of a few hundred commonly requested memory addresses and what a few addresses commonly called afterward. Delta Correlating Prefetchers are similar, but use the difference between requested memory addresses rather than exact addresses. Some CPUs (for example recent AMD CPUs) even use neural networks to predict future memory requests.
+
+---
+
+**Review: How Do I Use Prefetching Effectively?**
+
+* Use arrays instead of linked lists and trees whenever practical.
+* Access memory in predictable patterns (iterating predictably through arrays).
+* If working in a low-level language and instruction prefetching is considered, make sure to profile it to make sure that it does improve performance. Some fine-tuning may be requried.
+* Remember that fine-tuning of performance related to instruction prefetching may not translate to good portable performance.

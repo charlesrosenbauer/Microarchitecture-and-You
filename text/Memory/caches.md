@@ -80,4 +80,15 @@ In addition, [cache prefetching](prefetch.md) can have a big impact on your perf
 
 ---
 
+**Review: How Do I Use Caches Effectively?**
+
+* Reuse as much data as possible in the cache
+* Try to maintain temporal and spatial locality when possible; work with the cache, not against it
+* Understand how [cache prefetching](prefetch.md) works, and use prefetch-friendly memory access and data structures
+* Avoid excessive memory jumps; hash tables are much faster than trees because there are fewer jumps through the data structured (1 v. log(N))
+* Keep related memory close together if possible
+* Use cache-oblivious algorithms; the more cores, the more important this is!
+
+---
+
 [Okay, but why do we need them anyway?](whycaches.md)
