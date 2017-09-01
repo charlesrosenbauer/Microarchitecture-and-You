@@ -74,6 +74,7 @@ CPUs
   * Tiled Architectures (?)
   * VLIW : From DSPs to Itanium (?)
   * Stack Machines (?)
+  * FPGAs (?)
   * Belt Machines (?)
   * Future of CPUs
 
@@ -98,3 +99,21 @@ The Compiler
   * Various Optimizations
   * SSA Form : Functional Assembly
   * SIMD Optimizations (?)
+
+The Future of Hardware
+  * Manycore Systems
+  * Quantum Computing
+  * Heterogeous Architectures
+  * Tiled Architectures
+  * 2.5D and 3D Architectures
+  * Far-Future Computing Tech
+
+Analysis of Architectures (?)
+  * Architecture Analysis : x86 Overview (?)
+  * Architecture Analysis : AMD's Zen (?)
+  * Architecture Analysis : Intel Xeon Phi (?)
+  * Architecture Analysis : ARM big.LITTLE (?)
+  * Architecture Analysis : HPE's Machine (?)
+  * Architecture Analysis : Intel's Itanium (?)
+  * Architecture Analysis : Adapteva's Epiphany (?)
+  * Architecture Analysis : The Mill (?)
