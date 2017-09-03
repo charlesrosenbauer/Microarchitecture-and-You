@@ -33,7 +33,7 @@ Misc.
 
 Scalability and Communication
   * [SMP vs. NUMA](text/System/smpnuma.md)
-  * The Problem of Cache Coherency
+  * [The Problem of Cache Coherency](text/Memory/cachecoherency.md)
   * Advantages and Disadvantages of Immutability
   * Atomic Operations
   * Parallel Reads and Sequential Writes
@@ -49,7 +49,7 @@ Memory
   * Memory Bandwidth, Bus Size, and Latency
   * [Why Caches](text/Memory/whycaches.md)
   * [Caches](text/Memory/caches.md)
-  * The Problem of Cache Coherency
+  * [The Problem of Cache Coherency](text/Memory/cachecoherency.md)
   * [SMP vs. NUMA](text/System/smpnuma.md)
   * Virtual Memory
   * Memory Paging
