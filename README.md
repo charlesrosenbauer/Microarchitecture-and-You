@@ -31,6 +31,15 @@ Misc.
   * [Clock Speed v. Core Count](text/Misc/clockvcores.md)
   * [Amdahl's Law](text/Misc/amdahl.md)
 
+Scalability and Communication
+  * [SMP vs. NUMA](text/System/smpnuma.md)
+  * The Problem of Cache Coherency
+  * Advantages and Disadvantages of Immutability
+  * Atomic Operations
+  * Parallel Reads and Sequential Writes
+  * Uses of Parallel Writes
+  * Cache Oblivious Algorithms
+
 Memory
   * [Why You Should Care About Memory](text/Memory/whyyoushouldcareaboutmemory.md)
   * [RAM](text/Memory/ram.md)
@@ -41,7 +50,7 @@ Memory
   * [Why Caches](text/Memory/whycaches.md)
   * [Caches](text/Memory/caches.md)
   * The Problem of Cache Coherency
-  * SMP vs. NUMA
+  * [SMP vs. NUMA](text/System/smpnuma.md)
   * Virtual Memory
   * Memory Paging
   * Optimizing Around Latency
@@ -67,8 +76,7 @@ CPUs
   * SMT / Hyperthreading
   * Out-of-Order Execution
   * [SIMD v. MIMD](text/CPU/simdvmimd.md)
-  * Multicore and SMP
-  * Manycore and NUMA
+  * [SMP vs. NUMA](text/System/smpnuma.md)
   * Heterogeous Architectures
   * Instruction v. Data Caches
   * Tiled Architectures (?)
