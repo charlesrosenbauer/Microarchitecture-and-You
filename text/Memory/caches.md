@@ -57,7 +57,7 @@ In the case of a read, the CPU sends an address to the cache. The cache hashes i
 
 In the case of a write, the CPU sends an address and a few bytes to the cache. A similar process occurs to when the CPU reads from the cache. The difference is that when a cache hit occurs, the value is written to the cache line and no value is sent back. If no appropriate cache line exists, then the address and data are sent out to RAM.
 
-[Writes to the cache when multiple cores are present is *much* more complicated.]()
+[Writes to the cache when multiple cores are present is *much* more complicated.](cachecoherency.md)
 
 Another case to consider is when a cache line is removed due to a conflict. Cache lines typically contain a "dirty bit". This functions as a simple boolean value. It is false by default, but is set to true whenever the cache line is changed. If the dirty bit is false, then the rejected cache line is discarded. If the dirty bit is true, then that means it that RAM needs to be updated, and so the changes are sent out to RAM. This costs nothing in terms of latency as far as the CPU is concerned, but it does use some memory bandwidth. Some caches are "write-back", meaning that they will update RAM whenever any change is made. This makes a dirty bit mostly unnecessary, but has a large cost in terms of memory bandwidth (and consequentially power consumption).
 

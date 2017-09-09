@@ -57,3 +57,25 @@ It is also important to note that if a cache line exists in only one cache (as i
 Due to the improved efficiency and scalability, Write Invalidation is the primary coherency technique used in GPUs, as well as many recent CPUs.
 
 ---
+
+**The Fundamental Problem: Shared Mutable State**
+
+Fundamentally, coherency comes down to mutable state. If there is no data being modified, there is no need to manage asynchronous changes to that data. Of course, software depends heavily on data being modified, so that's not something we can avoid.
+
+We can go further than that though; we can say that [*Communication* is Fundamentally the biggest factor in scalability](../System/scalability.md). This makes sense; a program with tons of parallelism, but no necessary communication between threads is about as scalable as you can get. Embarassingly parallel problems, or in other words anything that can be expressed as a *map* operation, scale very well with parallelism. However, as soon as you add in more communication, such as with a *parallel reduce* or *scan* operation, suddenly organized communication becomes necessary, slowing things down.
+
+Due to the way that memory works in modern systems, such communication is almost exclusively done via shared mutable state in memory. The same kind that necessitates cache coherency.
+
+---
+
+**Scratchpad Memory**
+
+One solution is Scratchpad memory. This, in principle, is quite simple; rather than do all the communication in the distant RAM, you bring the RAM closeby and work there.
+
+Scratchpad memory consists of typically a few dozen to a couple hundred KB of [SRAM](commonmemory.md) built into the CPU, often shared by multiple cores (though variations with strictly local access exist too). Scratchpad is directly addressable, meaning that unlike a cache, it *does not* represent a different part of memory. It functions like RAM, but just faster.
+
+There are limitations to Scratchpad memory though. It often adds extra burdens to programmers/compilers, can reduce portability in cases where software is reliant on it, and adds extra work for the Operating System, as it has to be copied somewhere during a context switch.
+
+Most CPUs (aside from some embedded CPUs) don't use Scratchpad. GPUs and the Cell CPU (from the Playstation 3) do contain scratchpad however. In the case of GPUs, several dozen cores might all be able to access the scratchpad simultaneously, with a latency of only a clock cycle or two, allowing for very rapid thread communication.
+
+---
