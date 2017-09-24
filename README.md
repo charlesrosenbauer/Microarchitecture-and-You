@@ -30,6 +30,7 @@ Misc.
   * [Why You Should Care About Hardware](text/Misc/whyyoushouldcareabouthardware.md)
   * [Clock Speed v. Core Count](text/Misc/clockvcores.md)
   * [Amdahl's Law](text/Misc/amdahl.md)
+  * [Major Bottlenecks](text/Misc/majorbottlenecks.md)
 
 Scalability and Communication
   * [SMP vs. NUMA](text/System/smpnuma.md)
