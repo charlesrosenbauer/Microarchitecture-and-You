@@ -64,14 +64,21 @@ Using Cache-Oblivious Algorithms might also improve your cache performance, as w
 
 It might also be good to try organizing your data into arrays and iterating through arrays in predictable ways. Reading each item in an array in order is a pretty predictable pattern, which the cache prefetcher can pick up on, preloading some of your data for you! Read more about prefetching [here.](../Memory/prefetch.md)
 
+Other memory layout techniques may be possible, such as SOA/AOS optimizations. These can be a little annoying to implement, but can dramatically cut down on the amount of data the CPU has to load into the cache, as well as make it easier for your compiler to perform vectorization optimizations (improving CPU performance considerably).
 
 
+*What can I do about this in a static language?*
+
+Often times, static and compiled languages allow you to do more in this department. For example, if you can determine the size of the items you're working with and have some ability to control memory layout (or at least put things in flat arrays), you might be able to fit multiple items into a single cache line. If items used close together in time are in the same cache line, the cache line only needs to be fetched once, cutting down on latency. Having some understanding of byte alignment might help significantly here.
 
 ---
 
 **Clock Speed**
 
+Clock speed is kind of the default bottleneck; the processor just isn't fast enough to handle all the work you're giving it. Modern CPUs are pretty complex, especially those based on Out-of-Order Execution. OOE CPUs can detect large amounts of parallelism in your code (more than you might!), and dynamically reschedule your code on the fly for maximum performance. Regardless, there are still things you can do here.
+
+First off, if your code is heavy with math, it might be good to look into vectorization optimizations and [SIMD](../CPU/simdvmimd.md). These can dramatically improve the performance of your code if it fits the right criteria.
+
+It might also be that you can split your code across multiple cores, though this often requires a bit of extra work, and only works in code full of parallelism.
 
 ---
-
-**Core Count**
