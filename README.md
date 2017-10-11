@@ -44,10 +44,14 @@ Scalability and Communication
 Memory
   * [Why You Should Care About Memory](text/Memory/whyyoushouldcareaboutmemory.md)
   * [RAM](text/Memory/ram.md)
-  * Memory Alignment
   * [Common Types of Memory](text/Memory/commonmemory.md)
-  * How Programs Lay Out Your Memory
+  * [Why Memory Layout is Important](text/Memory/layout.md)
+  * The Stack and Heap
+  * Bunches of Bytes
+  * Memory Alignment
   * Memory Bandwidth, Bus Size, and Latency
+  * Manual Memory Management
+  * Garbage Collection
   * [Why Caches](text/Memory/whycaches.md)
   * [Caches](text/Memory/caches.md)
   * [The Problem of Cache Coherency](text/Memory/cachecoherency.md)
