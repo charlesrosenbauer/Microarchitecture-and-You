@@ -15,8 +15,6 @@ So here's my plan: this will start out as a *relatively* brief explanation of mi
 
 Unlike wikipedia though, this will be more stripped down and to-the-point, more directed toward programmers, and trying to keep relavent to the overall goal of keeping to the aforementioned goal.
 
-This does assume you understand binary, modular arithmetic, the concept of bits and bytes, etc.
-
 At the moment, the following is the Table of Contents. Most of these articles have not been started yet, but I'll get to them as I can. Also, due to the intended nonlinear nature of this (I don't know what exactly to call this), this will be more of a list of subjects covered with links to those that have been completed. Feel free to suggest more subjects or contribute. Just be aware that this will take some time to complete. Articles with "(?)" afterward are ones I'm not sure about doing, as I don't know how interested people will be in them.
 
 ---
@@ -47,7 +45,7 @@ Memory
   * [Common Types of Memory](text/Memory/commonmemory.md)
   * [Why Memory Layout is Important](text/Memory/layout.md)
   * The Stack and Heap
-  * Bunches of Bytes
+  * [Bunches of Bytes](text/Memory/bunchesofbytes.md)
   * Memory Alignment
   * Memory Bandwidth, Bus Size, and Latency
   * Manual Memory Management
