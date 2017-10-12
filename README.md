@@ -44,7 +44,7 @@ Memory
   * [RAM](text/Memory/ram.md)
   * [Common Types of Memory](text/Memory/commonmemory.md)
   * [Why Memory Layout is Important](text/Memory/layout.md)
-  * The Stack and Heap
+  * [The Stack and Heap](text/Memory/stacksandheaps.md)
   * [Bunches of Bytes](text/Memory/bunchesofbytes.md)
   * Memory Alignment
   * Memory Bandwidth, Bus Size, and Latency

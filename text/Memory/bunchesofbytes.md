@@ -82,3 +82,5 @@ What about more complex data strutures? The below diagram shows 3 nodes of a tre
 For those unfamiliar with Go syntax (or the syntax of many other lower-level languages for that matter), a value of type T is just the set of bytes for T, while a value of type * T is a pointer to said data. The pointer may store an index for a value of that type, or alternatively store a null value (zero) to indicate that it points nowhere. The above type is a common way to define a node for a tree in these kinds of languages, with each pointer providing the location of a child node.
 
 ![Tree Layout](../../images/treelayout.jpg)
+
+Note: Pointers in the image are only 4 bytes, meaning the diagram is of how this would be in a 32-bit machine. 64-bit machines are standard now, but their 8-byte pointers are big, so I only drew 4 byte ones.
