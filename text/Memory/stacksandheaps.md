@@ -7,6 +7,20 @@
 
 ---
 
+**Overall Layout of Memory**
+
+Overall, programs are laid out typically with instructions starting shortly after address 0. 0 itself is inaccessible due to it being used for null values. Trying to read data with a 0 pointer, or any other inaccessible data for that matter, will trigger a type of error called a Segmentation Fault. The size of this space of course depends entirely on how big your executable file is. The next couple megabytes of memory afterward are the *call stack*, and everything after that is either part of the *heap*, or not accessible.
+
+Of course, it may seem odd that all programs start memory near address 0; this appears as though it should create conflicts with multiple programs. This is solved with *virtual memory addressing*, though the specific details of virtual memory are beyond the scope of this current article. As for why this is done, it simplifies the programming model and helps keep programs from interfering with each other, either by accident or malice.
+
+If a program requires more memory, it typically gets the memory by making a request to the operating system for an additional *memory page.* This is, once again, beyond the scope of this current article (it's part of the *virtual memory* system), but has a few consequences worth noting here:
+  * When the program needs more memory, it has to make explicit calls to the OS for a new memory page. These pages typically range from 4kB - 2MB, though can be much bigger.
+  * When a program has spare memory, it will have to explicitly give pages back to the OS. It however *has to guarantee* that the data inside said pages *will no longer be needed.*
+  * Accessing pages that the program no longer has access to, or does not yet have access to, will cause segmentation faults.
+  * The OS provides memory to programs in large, fixed-size chunks.
+
+---
+
 **Call Stacks**
 
 Most modern software is based around the idea of a call stack. This is a stack (LIFO) used to quickly allocate data that will be used only for the duration of the current function scope, and is normally a couple megabytes in size. Every time a function is called, the *stack frame* for that function is pushed onto the top of the stack. When that function returns, the *stack frame* is popped off. For this reason, multithreaded programs will utilize multiple stacks, one for each thread. Some parallelism-focused languages even avoid using a call stack and choose to use a heap-allocated graph instead, as stacks don't really support a parallel form of stack frame.
@@ -31,7 +45,7 @@ So call stacks are implemented as just a big block of bytes and a pointer.
 
 ![Call Stacks](../../images/stacklayout.jpg)
 
-The *stack pointer* (often abbreviated SP) is normally stored in a dedicated CPU register and stores a pointer to the top of the stack (represented by the arrow in the diagram). When a *stack frame* needs to be added, the number of bytes in the stack frame is added to *SP* (or subtracted to be more accurate, though that will be covered later), thus creating a new stack pointer. The current *stack frame* is placed in the space between the new and old *stack pointers*. Included in the *stack frame* is the old value of *SP* and the old *instruction pointer* (IP), which will both be reset when the function returns.
+The *stack pointer* (often abbreviated SP) is normally stored in a dedicated CPU register and stores a pointer to the top of the stack (represented by the arrow in the diagram). When a *stack frame* needs to be added, the number of bytes in the stack frame is added to *SP* (or subtracted, as many systems actually have the *call stack* grow *downward*), thus creating a new stack pointer. The current *stack frame* is placed in the space between the new and old *stack pointers*. Included in the *stack frame* is the old value of *SP* and the old *instruction pointer* (IP), which will both be reset when the function returns.
 
 The top example in the diagram shows an empty portion of the stack.
 
