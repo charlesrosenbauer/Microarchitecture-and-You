@@ -54,7 +54,7 @@ Memory
   * [Caches](text/Memory/caches.md)
   * [The Problem of Cache Coherency](text/Memory/cachecoherency.md)
   * [SMP vs. NUMA](text/System/smpnuma.md)
-  * Virtual Memory
+  * [Virtual Memory](text/Memory/virtualmem.md)
   * Memory Paging
   * Optimizing Around Latency
   * Optimizing Around Bandwidth
