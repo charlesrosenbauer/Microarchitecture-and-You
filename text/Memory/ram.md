@@ -23,5 +23,5 @@ Note however that word lines typically aren't much larger than cache lines, if t
 **How Do I Use RAM effectively?**
 
 * Write [cache-friendly](caches.md) and [prefetch-friendly](prefetch.md) code to avoid unnecessary RAM access.
-* Avoid random jumping around RAM too much, as this can cause misses in the TLB cache.
+* Avoid random jumping around RAM too much, as this can cause misses in the [TLB](virtualmem.md) cache.
 * Remember that while RAM is *Random Access*, that doesn't mean that predictable memory access isn't substantially faster.

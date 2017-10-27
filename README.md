@@ -55,9 +55,6 @@ Memory
   * [The Problem of Cache Coherency](text/Memory/cachecoherency.md)
   * [SMP vs. NUMA](text/System/smpnuma.md)
   * [Virtual Memory](text/Memory/virtualmem.md)
-  * Memory Paging
-  * Optimizing Around Latency
-  * Optimizing Around Bandwidth
   * Caches v. Scratchpad v. Register Files
   * [Prefetching](text/Memory/prefetch.md)
   * Future of Memory
