@@ -60,3 +60,9 @@ However, what happens if a function needs to return some data? If you happen to 
 The standard solution is the heap; a fairly unorganized portion of memory where individual chunks of memory have to be explicitly allocated and cleaned up, but where data can persist as long as necessary. There are other solutions (for example, Jonathan Blow's upcoming Jai language features "Temporary storage"; a secondary stack that can be explicitly pushed to and popped from, allowing data to be quickly allocated and freed, but also passed between function scopes without copying. This still has it's limitations however.)
 
 ---
+
+**How the Heap Works**
+
+The heap is nothing more than the memory beyond the stack, where objects can be freely managed by the application. The data in the heap is not stored in a simple data structure like in the stack, which has the advantage of being more flexible, while having the disadvantage of having to be explicitly managed by the application.
+
+In most modern languages, data in the heap is managed by a garbage collector; a set of code that keeps track of each object and regularly checks whether or not the application still references the data. In the case that it no longer does, the garbage collector is able to mark the memory that the object consumes as available, and will fill it with a new object when possible. The checks needed often require that the application pause and scan all memory, which can be expensive and cause interruptions.
