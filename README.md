@@ -49,7 +49,8 @@ Memory
   * Memory Alignment
   * Memory Bandwidth, Bus Size, and Latency
   * Manual Memory Management
-  * Garbage Collection
+  * Automatic Reference Counting
+  * [Garbage Collection](text/Programming/GarbageCollection.md)
   * [Why Caches](text/Memory/whycaches.md)
   * [Caches](text/Memory/caches.md)
   * [The Problem of Cache Coherency](text/Memory/cachecoherency.md)
@@ -105,6 +106,7 @@ Programming This Crazy Hardware
 
 The Compiler
   * Various Optimizations
+  * Intro to Substructural Type Systems
   * SSA Form : Functional Assembly
   * SIMD Optimizations (?)
 
