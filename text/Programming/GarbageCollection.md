@@ -1,4 +1,8 @@
-#Garbage collection
+# Garbage collection
+
+---
+
+**Note:** This article talks a lot about pointers. You can read more about them [here](../Memory/bunchesofbytes.md). It also talks about the call stack and the heap, which can be read about [here](../Memory/stacksandheaps.md).
 
 ---
 
