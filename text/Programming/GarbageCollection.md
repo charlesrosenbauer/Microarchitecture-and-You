@@ -79,8 +79,18 @@ The limitations of parallel garbage collection may become an issue in future sof
 
 **Conservative Garbage Collection**
 
+Above, I mentioned that *Mark and Sweep* can be adapted for use with C/C++. Unfortunately, there are some issues with this related to C/C++'s use of pointer arithmetic. With pointer arithmetic, the exact type of a value may be impossible to determine (in some cases, C/C++ even allows you to have a value that exists as multiple types simultaneously). As a result, this complicates things as the locations of the pointers within an object are necessary to determine what other objects it references.
+
+The solution is *Conservative Garbage Collection.* The basic idea is simple; if something looks like a pointer, treat it as one. If it's not, it's better to be safe than sorry. Due to the fact that modern 64-bit computers use 64-bit pointers, but only can access a few terabytes of RAM at the most (architectural limitations), a pointer will be a set of 8 bytes where the top 2 bytes or so are always zero. *Conservative Garbage Collection* does exactly this.
+
 ---
 
 **Edge Cases of GC**
+
+One common edge case of GC is that a value that is referenced in the call stack, but no longer used, will still stick around. This is called a *Memory Leak.* For example, if a local variable exists that stores a large data structure, the data structure will remain visible according to the garbage collector until the application leaves the current scope. If the function runs for a long time after the last usage of the data structure (for example, if it calls several other functions, enters a long loop, etc.) the data structure may unnecessarily stick around a long time.
+
+Even if the variable that originally referenced it no longer exists, if any unnecessary references exist to an object or set of objects, (for example, if you include the reference as part of the return value), those objects will not be collected.
+
+A simple solution to this problem is to, if possible, set any references to large data structures to null as soon as you know you will no longer need them. If the language does not permit null values, set the value to something simple (i.e, empty object/data structure, empty value in an option type, etc.) will often be enough to dereference it.
 
 ---
