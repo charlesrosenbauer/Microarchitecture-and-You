@@ -72,7 +72,7 @@ CPUs
   * [Common Types of Memory](text/Memory/commonmemory.md)
   * [Prefetching](text/Memory/prefetch.md)
   * [RISC v. CISC](text/CPU/riscvcisc.md)
-  * IPC and ILP
+  * [IPC and ILP](text/CPU/ipcandilp.md)
   * Superscalar Processors
   * SMT / Hyperthreading
   * Out-of-Order Execution
