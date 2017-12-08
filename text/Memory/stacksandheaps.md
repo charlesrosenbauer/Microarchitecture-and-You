@@ -67,7 +67,7 @@ The heap is nothing more than the memory beyond the stack, where objects can be 
 
 In most modern languages, data in the heap is managed by a [garbage collector](../Programming/GarbageCollection.md); a set of code that keeps track of each object and regularly checks whether or not the application still references the data. In the case that it no longer does, the garbage collector is able to mark the memory that the object consumes as available, and will fill it with a new object when possible. The checks needed often require that the application pause and scan all memory, which can be expensive and cause interruptions in Real-time applications (automotive, embedded, and medical applications) and performance-sensitive applications (games, supercomputer simulations).
 
-In other languages, [garbage collection](../Programming/GarbageCollection.md) is either replaced with ARC (Automatic Reference Counting) or manual memory management.
+In other languages, [garbage collection](../Programming/GarbageCollection.md) is either replaced with ARC ([Automatic Reference Counting](../Programming/ReferenceCounting.md)) or manual memory management.
 
 In ARC, the application keeps track of how many pointers point to each object and free the object whenever that number reaches zero. This method avoids interruptions from garbage collection pauses, but has its own performance issues, especially in multithreaded applications. In such applications, atomic operations are required in order to keep reference counting accurate. Unfortunately, these operations can be very slow (typically comparable to the latency of an L3 cache), creating frequent stalls in the CPU, especially if the operation is followed by some kind of conditional logic (i.e, can I free this object yet?).
 
