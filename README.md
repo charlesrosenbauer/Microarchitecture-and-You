@@ -79,7 +79,7 @@ CPUs
   * [SIMD v. MIMD](text/CPU/simdvmimd.md)
   * [SMP vs. NUMA](text/System/smpnuma.md)
   * Heterogeous Architectures
-  * Instruction v. Data Caches
+  * [Instruction v. Data Caches](text/Memory/instructiondatacaches.md)
   * Tiled Architectures (?)
   * VLIW : From DSPs to Itanium (?)
   * Stack Machines (?)
