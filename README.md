@@ -49,7 +49,7 @@ Memory
   * Memory Alignment
   * Memory Bandwidth, Bus Size, and Latency
   * Manual Memory Management
-  * Automatic Reference Counting
+  * [Automatic Reference Counting](text/Programming/ReferenceCounting.md)
   * [Garbage Collection](text/Programming/GarbageCollection.md)
   * [Why Caches](text/Memory/whycaches.md)
   * [Caches](text/Memory/caches.md)
