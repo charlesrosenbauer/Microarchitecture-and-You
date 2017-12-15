@@ -66,7 +66,7 @@ CPUs
   * CPU Fundamentals
   * Basics of Assembly
   * Logic Gates
-  * Pipelines
+  * [Pipelines and Execution](text/CPU/pipelines.md)
   * Branch Prediction
   * Interacting With Memory
   * [Common Types of Memory](text/Memory/commonmemory.md)
