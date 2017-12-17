@@ -63,13 +63,37 @@ The *SCHEDULE* stage(s) in modern CPUs is due to the complexity created from Out
 
 ---
 
+**Bypasses**
+
+---
+
 **Hazards!**
 
-![Pipeline Dependencies](../../images/pipelinedependencies.jpg)
+One concern with a pipeline is the presence of *Hazards.* *Hazards* are dependencies between individual instructions in the pipeline that prevent instructions from being issued right away. For example, suppose we have the following set of instructions:
 
-In the above diagram, colored squares represent stages of executing an instruction and arrows represent dependencies.
+```
+a = b + c
+f = d * e
+g = a + f
+```
 
+Cycle 0: Our CPU first isses an instruction to add **b** and **c**, storing the result in **a**. Let's say addition takes 1 cycle.
 
+Cycle 1: The CPU issues an instruction to multiply **d** and **e**, storing the result in **f**. Let's say multiplication has 3 execution cycles. In this cycle, the CPU also finishes executing the previous instruction (as it only took 1 cycle).
+
+Cycle 2: The CPU attempts to issue an instruction to add **a** and **f**. However, while **a** has been evaluted, **f** has not, as the multiplication will take another two cycles. As a result, the CPU cannot continue until the multiply has completed.
+
+Cycle 3: The CPU continues to wait, as the multiply instruction finishes up.
+
+Cycle 4: Now that both previous dependencies have been completed, the third instruction (**g** = **a** + **f**) can finally be issued.
+
+Cycle 5: The value of **g** is now available.
+
+--
+
+Hazards can slow down execution if the CPU is unable to find other work to do in the meantime. A lot of work on modern CPUs comes down to maximizing [IPC](ipcandilp.md) by finding other work for the CPU to do in the meantime. Modern CPUs also often feature multiple parallel pipelines, making the problem more complicated.
+
+One simple solution to this can actually be done by the compiler, which is *Instruction Scheduling*. Simply put, most code has some extent to which instructions can be rearranged without changing the outcome of the code. In the above example, the first and second instructions can actually be swapped, as there are no dependencies between the two. In fact, swapping them would even reduce the number of cycles that the CPU would take to run the above code. I'll leave the explanation up to the reader to figure out. By cleverly arranging instructions such that the instructions with high latency (like multiply) are not immediately followed by instructions dependent on them, *Instruction Scheduling* makes sure that most of the time, the CPU does not need to look hard for other work to do while waiting on slower instructions.
 
 ---
 
