@@ -122,3 +122,39 @@ Memory creates another problem, as the exact amount of time to load memory can v
 ---
 
 **Branches**
+
+```C
+if(condition){
+  Path A
+}else{
+  Path B
+}
+```
+
+Branches in a pipeline complicate things. With a branch, you have no idea what to put into the pipeline; it could be the code in **Path A**, or in **Path B**. If you have a 20 stage pipeline, you'll be waiting 20 clock cycles before you know which instruction to fetch next. That's an expensive branch.
+
+Suppose we pick a direction. If we pick it at random, then 50% of the time we'll get it right and the branch will cost nothing. The other 50% of the time we have to throw away all the work we've done since the branch. Luckily, this cuts the cost of the branch in half; while a mispredicted branch will be expensive considering power consumption and latency, the predicted one is pretty cheap. Doing this cuts the branch penalty in a 20-stage pipeline to just 10 cycles (on average).
+
+If we have a more accurate predictor, this gets a lot more accurate:
+
+```C
+cost = (costOfPrediction * predictorAccuracy) + (costOfMispredict * (1 - predictorAccuracy));
+
+//Example:
+costOfPrediction  = 0;
+costOfMispredict  = 20;
+predictorAccuracy = 0.95;
+
+cost = (0 * 0.95) + (20 * 0.05);
+cost = 1;
+```
+
+The cost increases substantially if we are executing multiple instructions per cycle. Power cost increases are pretty obvious; we're throwing away more instructions. Performance costs are less obvious, but mostly come down to the fact that we can expect a branch every 4-8 instructions, and so the more instructions we are executing in parallel, the faster we'll come across new branches, and the more likely it will be that one of the branches in the pipeline will incorrect.
+
+As a result modern CPUs, which often issue 4-8 instructions per cycle and have 15-20 stage pipelines, often need extraordinarily advanced branch predictors to minimize mispredicts.
+
+---
+
+**Optimizations**
+
+The best optimization to improve pipelining in your code (if you're not working with assembly) is to try to remove branches from your code. If you can write your code so that it does not contain any branches, it will likely perform a bit faster, especially if the branch is unlikely to go the same direction in most cases.
