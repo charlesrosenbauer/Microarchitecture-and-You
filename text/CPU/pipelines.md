@@ -147,7 +147,40 @@ predictorAccuracy = 0.95;
 
 cost = (0 * 0.95) + (20 * 0.05);
 cost = 1;
+
+//Another example:
+costOfPrediction  = 0;
+costOfMispredict  = 20;
+predictorAccuracy = 0.6;
+
+cost = (0 * 0.6) + (20 * 0.4);
+cost = 8;
+
+//If we come across a branch every N cycles, we can derive the following
+//performance numbers from Amdahl's Law:
+cost = 1 + (costPerBranch * frequencyOfBranches);
+
+//Example with a branch cost of 1 cycle, and branches every 5 cycles:
+costPerBranch = 1;
+frequencyOfBranches = 0.2;
+cost = 1 + (1 * 0.2);
+cost = 1.2;   // 17% of time will be spent on mispredicts.
+
+//Example with a branch cost of 8 cycles, and branches every 5 cycles:
+costPerBranch = 8;
+frequencyOfBranches = 0.2;
+cost = 1 + (8 * 0.2);
+cost = 2.6;   // 62% of time will be spent on mispredicts.
+
+//Example with a branch cost of 0.3 cycles, and branches every 5 cycles:
+costPerBranch = 0.3;
+frequencyOfBranches = 0.2;
+cost = 1 + (0.3 * 0.2);
+cost = 1.06;  //  6% of time will be spent on mispredicts.
+
+//This shows why modern CPUs need really good branch prediction.
 ```
+[Article on Amdahl's Law](../Misc/amdahl.md)
 
 The cost increases substantially if we are executing multiple instructions per cycle. Power cost increases are pretty obvious; we're throwing away more instructions. Performance costs are less obvious, but mostly come down to the fact that we can expect a branch every 4-8 instructions, and so the more instructions we are executing in parallel, the faster we'll come across new branches, and the more likely it will be that one of the branches in the pipeline will incorrect.
 
@@ -157,4 +190,51 @@ As a result modern CPUs, which often issue 4-8 instructions per cycle and have 1
 
 **Optimizations**
 
-The best optimization to improve pipelining in your code (if you're not working with assembly) is to try to remove branches from your code. If you can write your code so that it does not contain any branches, it will likely perform a bit faster, especially if the branch is unlikely to go the same direction in most cases.
+The best optimization to improve pipelining in your code (if you're not working with assembly) is to try to remove branches from your code. If you can write your code so that it does not contain any branches, it will likely perform a bit faster, especially if the branch is unlikely to go the same direction in most cases. If this isn't possible, try making your branches as predictable as possible; a branch that goes the same direction 90% of the time will be much easier to predict than one closer to 50/50, and thus will yield much better performance.
+
+Most techniques for removing branches come down to either math tricks, [SIMD condition masks](simdvmimd.md), or bit twiddling tricks. These oftentimes come at the cost of readability, but can be useful, especially in small, inner loops. If each branch is fairly expensive, this may be more expensive, so beware. For example:
+
+```C
+int x;
+if(unpredictableCondition){
+  x = a;
+}else{
+  x = b;
+}
+
+//If unpredictableCondition can be converted to a 1 or 0 (1 for true, 0 for
+//false) the following optimization can be used:
+
+x = (unpredictableCondition * a) - ((1 - unpredictableCondition) * b);
+
+//As multiplication can be expensive, bitwise operations can be used instead.
+//Rather than 1 or 0, unpredictableCondition must either be 0 or fully saturated
+//(11111111 for an 8 bit value, etc.) in order for this to work.
+//In this case, all the bits in the value (a or b) are set to 0 if the value is
+//not needed, and the value for each is combined with a bitwise OR.
+
+x = (unpredictableCondition & a) | ((~unpredictableCondition) & b);
+
+//Always remember to annotate these kinds of optimizations. They may not be easy
+//for your coworkers and collaborators to understand. Also, always remember to
+//profile your code to make sure that the optimization actually pays off. There
+//are so many factors here that it can be hard to predict actual performance
+//without actually running the code.
+```
+
+Sometimes CPUs can even support *Predicated Instructions*, which are instructions that only run if a certain condition is met. These avoid use of the branch predictor (since they don't affect control flow). Your compiler may implement these as an alternative to certain small branches. However, while ARM CPUs (like in your phone) have extensive support for these, x86 (desktop/server CPUs) only features a conditional move instruction, and it's limited exclusively to working within registers. It essentially amounts to the following code:
+
+```C
+int x = (cond)? a : b;
+
+//Or alternatively,
+
+int x;
+if(cond){
+  x = a;
+}else{
+  x = b;
+}
+
+//a and b must be either integers, floats, booleans, or pointers
+```
