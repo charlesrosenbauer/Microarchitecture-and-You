@@ -29,6 +29,7 @@ Misc.
   * [Clock Speed v. Core Count](text/Misc/clockvcores.md)
   * [Amdahl's Law](text/Misc/amdahl.md)
   * [Major Bottlenecks](text/Misc/majorbottlenecks.md)
+  * [Guidelines on Optimization](text/Misc/optimization.md)
 
 Scalability and Communication
   * [SMP vs. NUMA](text/System/smpnuma.md)
@@ -102,6 +103,7 @@ Programming This Crazy Hardware
   * Minimizing Cache Misses
   * Working with the Prefetcher
   * Cache-Oblivious Programming
+  * Data Oriented Design
   * Intro to Bit Twiddling : Crazy Speed Hacks (?)
 
 The Compiler
