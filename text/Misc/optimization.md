@@ -28,11 +28,10 @@ It's important to not get bogged down trying to optimize everything (after all, 
 
 ---
 
-**Where to Focus Efforts**
+**Where/How to Focus Efforts**
 
-Code often follows the Pareto principle, also known as the 80/20 rule. In this case, 80% of execution time is spent on 20% of the code. Most of this code tends to be specifically be innermost loops of frequently called functions. These are the places where performance tends to be most critical. 
+Code often follows the Pareto principle, also known as the 80/20 rule. In this case, 80% of execution time is spent on 20% of the code. Most of this code tends to be specifically be innermost loops of frequently called functions. These are the places where performance tends to be most critical. Some understanding of [Amdahl's Law](amdahl.md) is very useful here.
 
+It's also always important to remember to always verify that optimizations improve performance. Computers are very complex beasts these days, and the vast number of different factors can make predictions about performance very difficult to make. Therefore, it is never enough to just write an optimization, but it is also important to verify that it actually is an effective optimization. It may be that, due to factors beyond your control, or created by other parts of the application, or even created by other active applications, an optimization may fail to actually improve performance. It may also be that the effectiveness of the optimization may vary over time; the optimization may not improve performance now, but due to a change somewhere else later on, the optimization may become effective again. An understanding of hardware is of course a great way to make assessments on this, though it may occasionally still be difficult to assess exactly why an optimization may not be working well.
 
----
-
-**Profiling and Testing**
+Luckily, there are tools to make this process easier. *Profilers* are incredibly valuable tools for analyzing the performance of different parts of your application. They can serve as a great guide, showing you what parts of your application are most in need of optimization, and how the relative performance of different parts of the application vary as your application evolves.
