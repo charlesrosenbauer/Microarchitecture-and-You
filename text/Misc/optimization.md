@@ -20,13 +20,17 @@ Some of the crazier optimizations, bit twiddling for example, can provide signif
 
 These kinds of optimizations clearly suffer a critical problem; while they can dramatically improve performance in the right cases, they can require substantial technical knowledge to understand. Not all developers have such knowledge, so it may make working with other developers a bit more challenging. They also may be more prone to difficult-to-fix bugs.
 
-While this particular issue is most dramatic with more exotic techniques, optimized code often comes with tradeoffs related to readability. Changing how a loop accesses an array to make it more [cache-friendly](../Memory/caches.md) may not provide clear benefits to someone who doesn't understand caches. The best that can be done in these cases is to annotate the code with a comment noting the reasoning for the optimization, and what is going on. Maybe with a resource to help the reader understand the problem better.
+While this particular issue is most dramatic with more exotic techniques, optimized code often comes with tradeoffs related to readability. Changing how a loop accesses an array to make it more [cache-friendly](../Memory/caches.md) may not provide clear benefits to someone who doesn't understand caches. The best that can be done in these cases is to annotate the code with a comment noting the reasoning for the optimization, and what is going on. Maybe with a resource to help the reader understand the problem better. This may not always be possible, especially when optimization requires heavy changes (like switching between SOA and AOS). Some consideration to how important optimizing a particular part of the application can go a long way sometimes.
 
-Donald Knuth's classic adage, "Premature Optimization is the Root of All Evil" also may come to mind when considering costs of optimization. Performance comes at a cost, and putting too many resources into it too soon can slow down development and increase bugs. If you find some place in your code that could use an optimizaiton, it may be a good idea to make a note to optimize it later. It's probably better to get it working first before trying to get it to run fast. 
+Tony Hoare's classic adage, popularized by Donald Knuth, "Premature Optimization is the Root of All Evil" also may come to mind when considering costs of optimization. However, it's important to remember that this is the abbreviated version. The full version is "We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%".
+
+It's important to not get bogged down trying to optimize everything (after all, the compiler isn't too bad at that in simple cases), but we should definitely consider optimizing the critical parts of our applications. Make sure the overall applicationa architecture is efficient, and make sure that the most commonly run code runs fast.
 
 ---
 
 **Where to Focus Efforts**
+
+Code often follows the Pareto principle, also known as the 80/20 rule. In this case, 80% of execution time is spent on 20% of the code. Most of this code tends to be specifically be innermost loops of frequently called functions. These are the places where performance tends to be most critical. 
 
 
 ---
