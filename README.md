@@ -75,7 +75,7 @@ CPUs
   * [RISC v. CISC](text/CPU/riscvcisc.md)
   * [IPC and ILP](text/CPU/ipcandilp.md)
   * Superscalar Processors
-  * SMT / Hyperthreading
+  * [SMT / Hyperthreading](text/CPU/smtandhyperthreading.md)
   * Out-of-Order Execution
   * [SIMD v. MIMD](text/CPU/simdvmimd.md)
   * [SMP vs. NUMA](text/System/smpnuma.md)
