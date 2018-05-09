@@ -10,7 +10,7 @@ RAM, or Random Access Memory, is your computer's temporary memory. The computer 
 
 **How RAM works**
 
-Here I'll mostly be discussing [DRAM](commonmemory.md), or Dynamic Random Access Memory. More specifically, DDR SDRAM, which is the most common type in consumer computers.
+Here I'll mostly be discussing [DRAM](commonmemory.md), or Dynamic Random Access Memory. More specifically, DDR SDRAM, which is the most common type in consumer computers. The rest of this article mostly goes into how RAM chips work. If you're interested in how programs lay out memory, check out the [Bunches of Bytes](bunchesofbytes.md) or [Layout](layout.md) articles.
 
 RAM is divided into banks, or blocks of memory that can be read from / written to in parallel. Multiple reads/writes to the same bank must be performed sequentially. However, most computers have dozens to hundreds of banks and can only take a couple in parallel at a time anyway, making conflicts relatively uncommon. Added to the fact that the vast majority of the time the CPU will be mostly working directly with data in the cache, and RAM banks tend not to be a major concern.
 
