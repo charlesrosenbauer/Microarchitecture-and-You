@@ -74,7 +74,7 @@ CPUs
   * [Prefetching](text/Memory/prefetch.md)
   * [RISC v. CISC](text/CPU/riscvcisc.md)
   * [IPC and ILP](text/CPU/ipcandilp.md)
-  * Superscalar Processors
+  * [Superscalar Processors](text/CPU/superscalar.md)
   * [SMT / Hyperthreading](text/CPU/smtandhyperthreading.md)
   * Out-of-Order Execution
   * [SIMD v. MIMD](text/CPU/simdvmimd.md)
