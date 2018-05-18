@@ -59,3 +59,19 @@ Modern CPUs are often very wide-issue, and very deeply pipelined. An x86 CPU in 
 Also, if the CPU is not properly designed, some speculated instructions may create side effects with unintended consequences. For example, the *Meltdown* and *Spectre* hardware exploits take advantage of such unintended side effects.
 
 ---
+
+**2-Bit Saturating Counter**
+
+One simple type of branch predictor is a 2-Bit Saturating Counter.
+
+Many branches are fairly predictable; if they go one way once, they're likely to go that way again. Such is the way with the branch at the end of a loop that conditionally jumps back to its beginning. A 2-Bit Saturating Counter does exactly what it sounds; it counts with 2-bit saturating arithmetic.
+
+For reference, saturating arithmetic is a form of computer arithmetic where if the number gets too big it simply stays at the maximum value, and if it gets too small, it stays at the minimum value. This keeps the number line from wrapping around like a clock like is typical in computer arithmetic. A 2-bit binary number can only store a range of numbers from 0 to 3 (-2 to 1 if signed).
+
+In this form of branch prediction, each branch is mapped to an entry in a small hash table. Each entry of the table stores one of these 2-bit counters, representing a number from 0 to 3. If the number is 0 or 1, the predictor predicts one path through the code. If it is 2 or 3, it predicts the other path. If the code actually takes the first path, the number is decremented regardless of the prediction. If the code takes the second path the counter is incremented, once again regardless of the prediction.
+
+This technique is quite good at handling simple, predictable branches. If the branch reliably goes in one specific direction, this predictor will handle it nicely. The branch may even take the opposite path on a rare occasion (after all, if it never does, what's the point of the branch anyway?), but the counter has some tolerance built in to handle this. If the branch switches behavior, the counter can always adapt after only two examples.
+
+The disadvantage of this type of predictor is that there are many branches that are slightly less predictable, or have patterns where they may frequently alternate between directions. In neither case does this predictor perform well. Regardless, it is a rather simple predictor that works reasonably well in low-end hardware.
+
+---
