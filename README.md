@@ -30,6 +30,7 @@ Misc.
   * [Amdahl's Law](text/Misc/amdahl.md)
   * [Major Bottlenecks](text/Misc/majorbottlenecks.md)
   * [Guidelines on Optimization](text/Misc/optimization.md)
+  * Bits and Bytes
 
 Scalability and Communication
   * [SMP vs. NUMA](text/System/smpnuma.md)
