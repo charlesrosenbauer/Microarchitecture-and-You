@@ -75,3 +75,15 @@ This technique is quite good at handling simple, predictable branches. If the br
 The disadvantage of this type of predictor is that there are many branches that are slightly less predictable, or have patterns where they may frequently alternate between directions. In neither case does this predictor perform well. Regardless, it is a rather simple predictor that works reasonably well in low-end hardware.
 
 ---
+
+**Two-Level Predictor**
+
+While complex predictors can be more accurate than simpler ones, this often comes at the cost of performance. Complex predictors can be rather slow (high latency), and can significantly increase the length of the CPU pipeline. This creates a trade-off that a *Two-Level Predictor* takes into account.
+
+A *Two-Level Predictor* is actually 3 different predictors in one; a fast and simple predictor, a slow and complex predictor, and a predictor that tries to predict which predictor is a better choice.
+
+This third predictor doesn't predict the direction of branches by itself, and relies on the other two predictors to make such decisions. Essentially, it should have a bias toward the simpler predictor whenever said predictor is sufficient (for performance). For more difficult-to-predict branches, the accuracy of the simpler predictor may be too poor for the performance advantage to actually pay off (as mispredicts are very expensive), and so the complex predictor should be used then.
+
+---
+
+**Neural Network Predictors**
