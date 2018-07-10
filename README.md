@@ -69,7 +69,7 @@ CPUs
   * Basics of Assembly
   * Logic Gates
   * [Pipelines and Execution](text/CPU/pipelines.md)
-  * Branch Prediction
+  * [Branch Prediction](text/CPU/branchprediction.md)
   * Interacting With Memory
   * [Common Types of Memory](text/Memory/commonmemory.md)
   * [Prefetching](text/Memory/prefetch.md)

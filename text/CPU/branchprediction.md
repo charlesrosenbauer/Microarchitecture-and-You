@@ -87,3 +87,5 @@ This third predictor doesn't predict the direction of branches by itself, and re
 ---
 
 **Neural Network Predictors**
+
+Some CPUs have resorted to using neural networks (most notably, many newer CPUs from AMD) for branch prediction. Once again, this maps branches to a hash table of predictors. The main difference is that this kind of predictor uses history information (1s and 0s representing whether or not the past N branches have been taken or not), and pass them as inputs for a small neural network. These kinds of predictors seem to be pretty accurate, though I have been unable to find precise numbers. 
